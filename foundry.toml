@@ -1,0 +1,27 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+solc = "0.8.26"
+
+# V4 requires specific remappings - use v4-periphery's v4-core for consistency
+remappings = [
+    "v4-core/=lib/v4-periphery/lib/v4-core/",
+    "v4-periphery/=lib/v4-periphery/",
+    "@uniswap/v4-core/=lib/v4-periphery/lib/v4-core/",
+    "@uniswap/v4-periphery/=lib/v4-periphery/",
+    "@openzeppelin/=lib/openzeppelin-contracts/",
+    "forge-std/=lib/forge-std/src/"
+]
+
+# Allow larger contracts
+optimizer = true
+optimizer_runs = 200
+via_ir = true
+
+[rpc_endpoints]
+sepolia = "${SEPOLIA_RPC_URL}"
+unichain_sepolia = "${UNICHAIN_SEPOLIA_RPC}"
+
+[etherscan]
+sepolia = { key = "${ETHERSCAN_API_KEY}" }
